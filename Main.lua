@@ -773,29 +773,6 @@ else
 end
 
 -- Themes
-do
-    local latestThemeIndex = 0
-    for i, theme in next, themeManager.BuiltInThemes do
-        if theme[1] > latestThemeIndex then
-            latestThemeIndex = theme[1]
-        end
-    end
 
-    latestThemeIndex = latestThemeIndex + 1
-
-    local funkyFridayTheme = table.clone(themeManager.BuiltInThemes.Default[2])
-
-
-    themeManager.BuiltInThemes['Default'] = { 1, funkyFridayTheme }
-
-    themeManager:SetLibrary(UI)
-    themeManager:SetFolder('funky_friday_autoplayer')
-    themeManager:ApplyToGroupbox(Tabs.Miscellaneous:AddLeftGroupbox('Themes'))
-
-    SaveManager:SetIgnoreIndexes({ 
-        "BackgroundColor", "MainColor", "AccentColor", "OutlineColor", "FontColor", -- themes
-        "ThemeManager_ThemeList", 'ThemeManager_CustomThemeList', 'ThemeManager_CustomThemeName', -- themes
-    })
-end
 
 UI:Notify(string.format('Welcome to ZazaHB!', tick() - start), 3)
