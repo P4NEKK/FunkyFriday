@@ -662,25 +662,18 @@ Groups.Autoplayer = Tabs.Main:AddLeftGroupbox('Autoplayer')
     Groups.Autoplayer:AddDropdown('PressMode', {
         Text = 'Mode', 
         Compact = true, 
-        Default = 'firesignal', 
-        Values = { 'firesignal', 'virtual input' }, 
+        Default = 'Firesignal', 
+        Values = { 'Firesignal', 'Virtual Input' }, 
         Tooltip = 'Use "virtual input" if "firesignal" does not work.', 
     })
 
 Groups.HitChances = Tabs.Main:AddLeftGroupbox('Settings')
-    Groups.HitChances:AddDropdown('AutoplayerMode', { 
-        Text = 'Autoplayer mode', 
-        Compact = true, 
-        Default = 1, 
-        Values = { 'Automatic', 'Manual' },
-        Tooltip = 'Mode to use for deciding when to hit notes.\n* Automatic: hits notes based on chance sliders\n* Manual: hits notes based on held keybinds',
-    })
 
-    Groups.HitChances:AddSlider('SickChance',   { Text = 'Sick chance', Min = 0, Max = 100, Default = 100, Suffix = '%', Rounding = 0, Compact = true })
-    Groups.HitChances:AddSlider('GoodChance',   { Text = 'Good chance', Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
-    Groups.HitChances:AddSlider('OkChance',     { Text = 'Ok chance',   Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
-    Groups.HitChances:AddSlider('BadChance',    { Text = 'Bad chance',  Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
-    Groups.HitChances:AddSlider('MissChance',   { Text = 'Miss chance', Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
+    Groups.HitChances:AddSlider('SickChance',   { Text = 'Sick', Min = 0, Max = 100, Default = 100, Suffix = '%', Rounding = 0, Compact = true })
+    Groups.HitChances:AddSlider('GoodChance',   { Text = 'Good', Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
+    Groups.HitChances:AddSlider('OkChance',     { Text = 'Ok',   Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
+    Groups.HitChances:AddSlider('BadChance',    { Text = 'Bad',  Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
+    Groups.HitChances:AddSlider('MissChance',   { Text = 'Miss', Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
 
 Groups.HitTiming = Tabs.Main:AddLeftGroupbox('Hit timing')
     Groups.HitTiming:AddDropdown('DelayMode', { 
