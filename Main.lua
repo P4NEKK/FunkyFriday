@@ -783,12 +783,9 @@ do
 
     latestThemeIndex = latestThemeIndex + 1
 
-    local linoriaTheme = themeManager.BuiltInThemes.Default[2]
     local funkyFridayTheme = table.clone(themeManager.BuiltInThemes.Default[2])
 
-    funkyFridayTheme.AccentColor = Color3.fromRGB(255, 65, 65):ToHex()
 
-    themeManager.BuiltInThemes['Linoria'] = { latestThemeIndex, linoriaTheme }
     themeManager.BuiltInThemes['Default'] = { 1, funkyFridayTheme }
 
     themeManager:SetLibrary(UI)
