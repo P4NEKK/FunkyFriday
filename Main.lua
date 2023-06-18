@@ -644,7 +644,7 @@ local SaveManager = {} do
 end
 
 local Window = UI:CreateWindow({
-    Title = string.format('       zazaHB - Funky Friday | Last Update: %s', metadata.updated),
+    Title = string.format('         zazaHB - Funky Friday | Last Update: %s', metadata.updated),
     AutoShow = true,
     
     Center = true,
