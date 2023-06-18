@@ -4,29 +4,7 @@ local ThemeManager = {} do
 	-- if not isfolder(ThemeManager.Folder) then makefolder(ThemeManager.Folder) end
 
 	ThemeManager.Library = nil
-	ThemeManager.BuiltInThemes = {
-		['Default'] 		= { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"191925","AccentColor":"6759b3","BackgroundColor":"16161f","OutlineColor":"323232"}') },
-	}
 
-	function ThemeManager:ApplyTheme(theme)
-		local customThemeData = self:GetCustomTheme(theme)
-		local data = customThemeData or self.BuiltInThemes[theme]
-
-		if not data then return end
-
-		-- custom themes are just regular dictionaries instead of an array with { index, dictionary }
-
-		local scheme = data[2]
-		for idx, col in next, customThemeData or scheme do
-			self.Library[idx] = Color3.fromHex(col)
-			
-			if Options[idx] then
-				Options[idx]:SetValueRGB(Color3.fromHex(col))
-			end
-		end
-
-		self:ThemeUpdate()
-	end
 
 	function ThemeManager:ThemeUpdate()
 		-- This allows us to force apply themes without loading the themes tab :)
