@@ -533,7 +533,7 @@ local SaveManager = {} do
     }
 
     function SaveManager:Save(name)
-        local fullPath = 'funky_friday_autoplayer/configs/' .. name .. '.json'
+        local fullPath = 'zazaHB/configs/' .. name .. '.json'
 
         local data = {
             version = 2,
@@ -562,7 +562,7 @@ local SaveManager = {} do
     end
 
     function SaveManager:Load(name)
-        local file = 'funky_friday_autoplayer/configs/' .. name .. '.json'
+        local file = 'zazaHB/configs/' .. name .. '.json'
         if not isfile(file) then return false, 'invalid file' end
 
         local success, decoded = pcall(httpService.JSONDecode, httpService, readfile(file))
@@ -579,7 +579,7 @@ local SaveManager = {} do
     end
 
     function SaveManager.Refresh()
-        local list = listfiles('funky_friday_autoplayer/configs')
+        local list = listfiles('zazaHB/configs')
 
         local out = {}
         for i = 1, #list do
@@ -610,7 +610,7 @@ local SaveManager = {} do
     end
 
     function SaveManager:Delete(name)
-        local file = 'funky_friday_autoplayer/configs/' .. name .. '.json'
+        local file = 'zazaHB/configs/' .. name .. '.json'
         if not isfile(file) then return false, string.format('Config %q does not exist', name) end
 
         local succ, err = pcall(delfile, file)
@@ -628,7 +628,7 @@ local SaveManager = {} do
     end
 
     function SaveManager.Check()
-        local list = listfiles('funky_friday_autoplayer/configs')
+        local list = listfiles('zazaHB/configs')
 
         for _, file in next, list do
             if isfolder(file) then continue end
@@ -654,8 +654,8 @@ local Window = UI:CreateWindow({
 local Tabs = {}
 local Groups = {}
 
-Tabs.Main = Window:AddTab('Auto player')
-Tabs.Miscellaneous = Window:AddTab('Settings')
+Tabs.Main = Window:AddTab('Settings')
+Tabs.Miscellaneous = Window:AddTab('Other')
 
 Groups.Autoplayer = Tabs.Main:AddLeftGroupbox('Autoplayer')
     Groups.Autoplayer:AddToggle('Autoplayer', { Text = 'Enabled' }):AddKeyPicker('AutoplayerBind', { Default = 'End', NoUI = true, SyncToggleState = true })
@@ -675,7 +675,7 @@ Groups.HitChances = Tabs.Main:AddLeftGroupbox('Settings')
     Groups.HitChances:AddSlider('BadChance',    { Text = 'Bad',  Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
     Groups.HitChances:AddSlider('MissChance',   { Text = 'Miss', Min = 0, Max = 100, Default = 0, Suffix = '%', Rounding = 0, Compact = true })
 
-Groups.HitTiming = Tabs.Main:AddLeftGroupbox('Hit timing')
+Groups.HitTiming = Tabs.Main:AddRightGroupbox('Hit timing')
     Groups.HitTiming:AddDropdown('DelayMode', { 
         Text = 'Delay mode', 
         Default = 1, 
@@ -691,7 +691,7 @@ Groups.Misc = Tabs.Main:AddRightGroupbox('Fun')
     Groups.Misc:AddButton('Unlock developer notes', ActivateUnlockables)
     Groups.Misc:AddToggle('Auto claim rings', { Text = 'Auto claim rings' })
 
-Groups.Configs = Tabs.Miscellaneous:AddRightGroupbox('Configs')
+Groups.Configs = Tabs.Miscellaneous:AddLeftGroupbox('Configs')
 Groups.Credits = Tabs.Miscellaneous:AddRightGroupbox('Credits')
     local function addRichText(label)
         label.TextLabel.RichText = true
@@ -715,8 +715,8 @@ Groups.Misc = Tabs.Miscellaneous:AddRightGroupbox('Other')
     UI.ToggleKeybind = Options.MenuToggle
 
 if type(readfile) == 'function' and type(writefile) == 'function' and type(makefolder) == 'function' and type(isfolder) == 'function' then
-    makefolder('funky_friday_autoplayer')
-    makefolder('funky_friday_autoplayer\\configs')
+    makefolder('zazaHB')
+    makefolder('zazaHB\\configs')
 
     Groups.Configs:AddDropdown('ConfigList', { Text = 'Config list', Values = {}, AllowNull = true })
     Groups.Configs:AddInput('ConfigName',    { Text = 'Config name' })
